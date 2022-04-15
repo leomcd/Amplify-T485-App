@@ -44,15 +44,7 @@ function Photos() {
             <button onClick={signOut}>Sign out</button>
             <div className="photos">
 
-            /*
-            <h3 className="section-heading">Add a photo</h3>
-              <input type='file' onChange={handleChange} />
-              <img src={state.fileUrl} />
-              <button onClick={saveFile}>Save File</button>
-            </div>
-            */
-
-            <a href={signedURL} target="_blank">TEST IMG</a>
+            <img src={signedURL}>TEST IMG</img>
           </>
         )}
       </Authenticator>
