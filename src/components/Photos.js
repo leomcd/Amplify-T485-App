@@ -32,7 +32,7 @@ function Photos() {
   }
 
   // get the signed URL string
-  const signedURL = await Storage.get('public/texture.png'); // get key from Storage.list
+  const signedURL = Storage.get('public/texture.png'); // get key from Storage.list
 
   return (
     <div className="container-fluid photo-section color-scheme-alt">
