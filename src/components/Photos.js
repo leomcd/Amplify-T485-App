@@ -52,7 +52,6 @@ function Photos() {
             </div>
             */
 
-            // inside your template or JSX code. Note <a download> doesn't work here because it is not same origin
             <a href={signedURL} target="_blank">TEST IMG</a>
           </>
         )}
