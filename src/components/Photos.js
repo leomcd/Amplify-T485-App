@@ -43,8 +43,9 @@ function Photos() {
           <>
             <button onClick={signOut}>Sign out</button>
             <div className="photos">
-
-            <img src={signedURL}>TEST IMG</img>
+              <h3 className="section-heading">Test image:</h3>
+              <img src={signedURL}>TEST IMG</img>
+            </div>
           </>
         )}
       </Authenticator>
