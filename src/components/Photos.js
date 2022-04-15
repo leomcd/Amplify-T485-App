@@ -31,6 +31,9 @@ function Photos() {
       })
   }
 
+  // get the signed URL string
+  const signedURL = await Storage.get('public/texture.png'); // get key from Storage.list
+
   return (
     <div className="container-fluid photo-section color-scheme-alt">
       <h3 className="section-heading">Photos</h3>
@@ -40,10 +43,17 @@ function Photos() {
           <>
             <button onClick={signOut}>Sign out</button>
             <div className="photos">
+
+            /*
+            <h3 className="section-heading">Add a photo</h3>
               <input type='file' onChange={handleChange} />
               <img src={state.fileUrl} />
               <button onClick={saveFile}>Save File</button>
             </div>
+            */
+
+            // inside your template or JSX code. Note <a download> doesn't work here because it is not same origin
+            <a href={signedURL} target="_blank">TEST IMG</a>
           </>
         )}
       </Authenticator>
