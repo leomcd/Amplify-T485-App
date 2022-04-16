@@ -32,7 +32,7 @@ function Photos() {
   }
 
   // get the signed URL string
-  const signedURL = Storage.get('public/texture.png'); // get key from Storage.list
+  const signedURL = Storage.get('texture.png',{level: 'public'}); // get key from Storage.list
 
   return (
     <div className="container-fluid photo-section color-scheme-alt">
@@ -44,7 +44,7 @@ function Photos() {
             <button onClick={signOut}>Sign out</button>
             <div className="photos">
               <h3 className="section-heading">Test image:</h3>
-              <img src={"https://s3buckett48544000-main.s3.us-west-1.amazonaws.com/public/texture.png"} />
+              <img src={signedURL} />
             </div>
           </>
         )}
