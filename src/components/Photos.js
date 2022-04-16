@@ -39,8 +39,10 @@ function Photos() {
     return firstUrl
   }
   // get the signed URL string
-  const signedURL = getFirstFile(); // get key from Storage.list
-  console.log(signedURL)
+  const signedURL = ''; // get key from Storage.list
+  getFirstFile().then(val => {
+    signedURL = val
+  })
 
   return (
     <div className="container-fluid photo-section color-scheme-alt">
