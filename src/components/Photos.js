@@ -44,7 +44,7 @@ function Photos() {
             <button onClick={signOut}>Sign out</button>
             <div className="photos">
               <h3 className="section-heading">Test image:</h3>
-              <img src={signedURL} />
+              <img src={"https://s3buckett48544000-main.s3.us-west-1.amazonaws.com/public/texture.png"} />
             </div>
           </>
         )}
