@@ -39,7 +39,7 @@ function Photos() {
     return firstUrl
   }
   // get the signed URL string
-  const signedURL = ''; // get key from Storage.list
+  let signedURL = ''; // get key from Storage.list
   getFirstFile().then(val => {
     signedURL = val
   })
