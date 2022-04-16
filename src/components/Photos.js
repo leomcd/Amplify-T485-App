@@ -33,7 +33,9 @@ function Photos() {
   
   async function getFirstFile() {
     let files = Storage.list('')
+    console.log(files)
     let firstUrl = await Storage.get(files[0].key)
+    console.log(firstUrl)
     return firstUrl
   }
   // get the signed URL string
