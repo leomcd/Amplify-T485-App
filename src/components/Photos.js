@@ -32,9 +32,9 @@ function Photos() {
   }
   
   async function getFirstFile() {
-    let files = Storage.list('')
+    let files = await Storage.list('')
     console.log(files)
-    let firstUrl = await Storage.get(files[0].key)
+    let firstUrl = await Storage.get(files[1].key)
     console.log(firstUrl)
     return firstUrl
   }
