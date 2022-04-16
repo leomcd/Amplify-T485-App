@@ -30,9 +30,14 @@ function Photos() {
         console.log('error: ', err)
       })
   }
+  
+  async function getFirstFile() {
+    let files = Storage.list('')
+    let firstUrl = await Storage.get(files[0].key)
+    return firstUrl
 
   // get the signed URL string
-  const signedURL = Storage.get('texture.png',{level: 'public'}); // get key from Storage.list
+  const signedURL = getFirstFile(); // get key from Storage.list
 
   return (
     <div className="container-fluid photo-section color-scheme-alt">
