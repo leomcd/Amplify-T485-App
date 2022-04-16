@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Amplify } from 'aws-amplify';
-import { Authenticator,useTheme,Heading, Text } from '@aws-amplify/ui-react';
+import { Authenticator, AmplifyS3Image, useTheme,Heading, Text } from '@aws-amplify/ui-react';
 import { useState } from 'react';
 import '@aws-amplify/ui-react/styles.css';
 
@@ -40,10 +40,7 @@ function Photos() {
   }
   // get the signed URL string
   let signedURL = ''; // get key from Storage.list
-  getFirstFile().then(val => {
-    signedURL = val
-  })
-
+  console.log(signedURL)
   return (
     <div className="container-fluid photo-section color-scheme-alt">
       <h3 className="section-heading">Photos</h3>
@@ -54,7 +51,7 @@ function Photos() {
             <button onClick={signOut}>Sign out</button>
             <div className="photos">
               <h3 className="section-heading">Test image:</h3>
-              <img src={signedURL} />
+              <AmplifyS3Image imgKey="texture.png" />
             </div>
           </>
         )}
