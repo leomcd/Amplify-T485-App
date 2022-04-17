@@ -138,7 +138,7 @@ p {
 
 /* Photos */
 .photos img {
-  width: 75%;
+  height: 500px;
 }
 
 /* AWS Authenticator */
