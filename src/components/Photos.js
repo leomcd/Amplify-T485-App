@@ -11,37 +11,6 @@ import { Storage } from 'aws-amplify';
 Amplify.configure(awsExports);
 
 function Photos() {
-  let state = { fileUrl: '', file: '', filename: '' }
-  let handleChange = e => {
-    const file = e.target.files[0]
-    state = {
-      fileUrl: URL.createObjectURL(file),
-      file,
-      filename: file.name
-    }
-  }
-
-  let saveFile = () => {
-    Storage.put(state.filename,state.file)
-      .then(() => {
-        console.log('saved');
-        state = {fileUrl:'',file:'',filename:''}
-      })
-      .catch(err => {
-        console.log('error: ', err)
-      })
-  }
-  
-  async function getFirstFile() {
-    let files = await Storage.list('')
-    console.log(files)
-    let firstUrl = await Storage.get(files[1].key)
-    console.log(firstUrl)
-    return firstUrl
-  }
-  // get the signed URL string
-  let signedURL = ''; // get key from Storage.list
-  console.log(signedURL)
   return (
     <div className="container-fluid photo-section color-scheme-alt">
       <h3 className="section-heading">Photos</h3>
@@ -51,8 +20,12 @@ function Photos() {
           <>
             <button onClick={signOut}>Sign out</button>
             <div className="photos">
-              <h3 className="section-heading">Test image:</h3>
-              <AmplifyS3Image imgKey="texture.png" />
+              <h2 className="section-heading">Emerald Bay</h2>
+              <AmplifyS3Image imgKey="ebay1.HEIC" />
+              <AmplifyS3Image imgKey="ebay2.HEIC" />
+              <AmplifyS3Image imgKey="ebay3.JPG" />
+              <AmplifyS3Image imgKey="ebay4.JPG" />
+              <AmplifyS3Image imgKey="ebay5.JPG" />
             </div>
           </>
         )}
