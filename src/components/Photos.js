@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { Amplify } from 'aws-amplify';
-import { Authenticator, AmplifyS3Image, useTheme,Heading, Text } from '@aws-amplify/ui-react';
+import { Authenticator, useTheme,Heading, Text } from '@aws-amplify/ui-react';
+import { AmplifyS3Image } from "@aws-amplify/ui-react/legacy";
 import { useState } from 'react';
 import '@aws-amplify/ui-react/styles.css';
 
