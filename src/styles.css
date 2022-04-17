@@ -138,7 +138,7 @@ p {
 
 /* Photos */
 .amplify-img-carousel {
-  max-width: 600px;
+  --width: 100%;
 }
 
 /* AWS Authenticator */
