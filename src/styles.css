@@ -137,8 +137,8 @@ p {
 }
 
 /* Photos */
-.photos img {
-  height: 500px;
+.amplify-img-carousel {
+  max-width: 600px;
 }
 
 /* AWS Authenticator */
