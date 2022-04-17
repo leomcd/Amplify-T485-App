@@ -21,11 +21,33 @@ function Photos() {
             <button onClick={signOut}>Sign out</button>
             <div className="photos">
               <h2 className="section-heading">Emerald Bay</h2>
-              <AmplifyS3Image imgKey="ebay1.HEIC" />
-              <AmplifyS3Image imgKey="ebay2.HEIC" />
-              <AmplifyS3Image imgKey="ebay3.JPG" />
-              <AmplifyS3Image imgKey="ebay4.JPG" />
-              <AmplifyS3Image imgKey="ebay5.JPG" />
+              <div id="carouselControls" className="carousel slide" data-ride="false">
+                <div className="carousel-inner">
+                  <div className="carousel-item active container-fluid">
+                    <AmplifyS3Image imgKey="ebay1.HEIC" /><br></br>
+                  </div>
+                  <div className="carousel-item container-fluid">
+                    <AmplifyS3Image imgKey="ebay2.HEIC" /><br></br>
+                  </div>
+                  <div className="carousel-item container-fluid">
+                    <AmplifyS3Image imgKey="ebay3.JPG" /><br></br>
+                  </div>
+                  <div className="carousel-item container-fluid">
+                    <AmplifyS3Image imgKey="ebay4.JPG" /><br></br>
+                  </div>
+                  <div className="carousel-item container-fluid">
+                    <AmplifyS3Image imgKey="ebay5.JPG" /><br></br>
+                  </div>
+                </div>
+                <a className="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+                  <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span className="sr-only">Previous</span>
+                </a>
+                <a className="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+                  <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span className="sr-only">Next</span>
+                </a>
+              </div>
             </div>
           </>
         )}
