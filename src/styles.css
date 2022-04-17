@@ -136,6 +136,11 @@ p {
   color: #D6CEBD;
 }
 
+/* Photos */
+.photos img {
+  width: 75%;
+}
+
 /* AWS Authenticator */
 [data-amplify-router-content] {
   text-align: left;
