@@ -6,6 +6,8 @@ import { AmplifyS3Image } from "@aws-amplify/ui-react/legacy";
 import { useState } from 'react';
 import '@aws-amplify/ui-react/styles.css';
 
+import './css/photos.css';
+
 import awsExports from '../aws-exports';
 import { Storage } from 'aws-amplify';
 Amplify.configure(awsExports);

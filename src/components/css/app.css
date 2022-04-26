@@ -1,0 +1,29 @@
+body {
+  font-family: "Roboto";
+  text-align: center;
+}
+
+h1, h2, h3 {
+  font-family: "Roboto Slab";
+}
+
+p {
+  color: #8f8f8f;
+  font-size: 1.25rem;
+}
+
+.color-scheme-alt {
+  background-color: #D6CEBD;
+  color: #243E2C;
+}
+
+/* Headings */
+
+.section-heading {
+  font-size: 3rem;
+}
+
+/* AWS Authenticator */
+[data-amplify-router-content] {
+  text-align: left;
+}

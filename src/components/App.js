@@ -8,6 +8,8 @@ import Photos from "./Photos";
 import PageNotFound from "./PageNotFound";
 import Footer from "./Footer";
 
+import './css/app.css';
+
 function App() {
   return (
     <>

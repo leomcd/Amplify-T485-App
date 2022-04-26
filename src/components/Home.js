@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Authenticator } from '@aws-amplify/ui-react'
 
+import './css/home.css'
+
 function Home() {
   return (
     <>

@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
-import './styles.css';
-
 import Amplify from 'aws-amplify';
 import config from './aws-exports';
 Amplify.configure(config);
