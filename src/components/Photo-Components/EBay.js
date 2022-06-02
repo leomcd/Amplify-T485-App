@@ -15,14 +15,13 @@ Amplify.configure(awsExports);
 function EBay() {
   return (
     <div className="container-fluid photo-section color-scheme-alt">
-      <h3 className="section-heading">Photos</h3>
+      <h3 className="section-heading">Emerald Bay</h3>
       <br />
       <Authenticator hideSignUp={true}>
         {({ signOut, user }) => (
           <>
             <button onClick={signOut}>Sign out</button>
             <div className="photos">
-              <h2 className="section-heading">Emerald Bay</h2>
               <AmplifyS3Image className="amplify-img-gallery" imgKey="ebay1.HEIC" />
               <AmplifyS3Image className="amplify-img-gallery" imgKey="ebay2.HEIC" />
               <AmplifyS3Image className="amplify-img-gallery" imgKey="ebay3.JPG" />

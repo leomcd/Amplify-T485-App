@@ -51,7 +51,7 @@ function Photos() {
                   <span className="sr-only">Next</span>
                 </a>
               </div>
-            <Link to="ebay">Photo Gallery</Link>
+            <Link to="ebay" className="btn btn-dark btn-lg">Photo Gallery</Link>
             </div>
           </>
         )}
