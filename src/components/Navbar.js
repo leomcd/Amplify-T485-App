@@ -21,7 +21,7 @@ function App() {
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
               <a className="dropdown-item nav-item" href="https://www.facebook.com/pg/Troop485/about/">Facebook</a>
               <a className="dropdown-item nav-item" href="mailto:boyscouts485@gmail.com">Mail</a>
-              <a className="dropdown-item nav-item" href="docs.google.com/forms/d/1pGRtCcQcu5Ur30JJIome3ddnbXSZjjsOUscb8tYL-rc/">Request Access</a>
+              <a className="dropdown-item nav-item" href="https://docs.google.com/forms/d/1pGRtCcQcu5Ur30JJIome3ddnbXSZjjsOUscb8tYL-rc/">Request Access</a>
             </div>
           </li>
           <li className="nav-item">
