@@ -21,7 +21,7 @@ function EBay() {
         {({ signOut, user }) => (
           <>
             <button onClick={signOut}>Sign out</button>
-            <div className="photos">
+            <div className="gallery">
               <AmplifyS3Image className="amplify-img-gallery" imgKey="ebay1.HEIC" />
               <AmplifyS3Image className="amplify-img-gallery" imgKey="ebay2.HEIC" />
               <AmplifyS3Image className="amplify-img-gallery" imgKey="ebay3.JPG" />

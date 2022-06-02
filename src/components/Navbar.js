@@ -25,9 +25,6 @@ function App() {
             </div>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="events">Events</Link>
-          </li>
-          <li className="nav-item">
             <Link className="nav-link" to="photos">Photos</Link>
           </li>
         </ul>
@@ -37,3 +34,8 @@ function App() {
 }
 
 export default App;
+/*
+<li className="nav-item">
+  <Link className="nav-link" to="events">Events</Link>
+</li>
+*/
