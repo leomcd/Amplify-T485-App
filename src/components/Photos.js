@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Amplify } from 'aws-amplify';
 import { Authenticator, useTheme,Heading, Text } from '@aws-amplify/ui-react';
+import {Link} from "react-router-dom";
 import { AmplifyS3Image } from "@aws-amplify/ui-react/legacy";
 import { useState } from 'react';
 import '@aws-amplify/ui-react/styles.css';
@@ -50,6 +51,7 @@ function Photos() {
                   <span className="sr-only">Next</span>
                 </a>
               </div>
+            <Link to="ebay">Photo Gallery</Link>
             </div>
           </>
         )}

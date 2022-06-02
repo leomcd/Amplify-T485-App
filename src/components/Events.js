@@ -12,7 +12,7 @@ Amplify.configure(awsExports);
 function Events() {
   return (
     <div className="container-fluid photo-section color-scheme-alt">
-      <h3 className="section-heading">Events for January</h3>
+      <h3 className="section-heading">Events</h3>
       <Authenticator hideSignUp={true}>
         {({ signOut, user }) => (
           <>

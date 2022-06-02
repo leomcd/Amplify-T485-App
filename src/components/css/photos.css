@@ -2,3 +2,7 @@
 .amplify-img-carousel {
   --width: 100%;
 }
+
+.amplify-img-gallery {
+  padding: 10px;
+}

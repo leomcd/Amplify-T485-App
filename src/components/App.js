@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import Home from "./Home";
 import Events from "./Events";
 import Photos from "./Photos";
+import EBay from "./Photo-Components/EBay";
 import PageNotFound from "./PageNotFound";
 import Footer from "./Footer";
 
@@ -19,6 +20,7 @@ function App() {
           <Route index element={ <Home /> } />
           <Route path="/events" element={ <Events /> } />
           <Route path="/photos" element={ <Photos /> } />
+          <Route path="/photos/ebay" element={ <EBay /> } />
           <Route path="*" element={ <PageNotFound /> } />
         </Routes>
         <Footer />
