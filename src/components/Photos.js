@@ -15,7 +15,7 @@ Amplify.configure(awsExports);
 
 function Photos() {
   return (
-    <div className="container-fluid photo-section color-scheme-alt">
+    <div className="photo-section container-fluid color-scheme-alt">
       <h3 className="section-heading">Photos</h3>
       <br />
       <Authenticator hideSignUp={true}>

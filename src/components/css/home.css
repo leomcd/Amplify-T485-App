@@ -1,27 +1,15 @@
 /* Title */
 
-.btn {
-  background-color: #243E2C;
-}
-
-.btn:hover {
-  background-color: #D6CEBD;
-  color: #000000;
-}
-
 .button-icon {
   padding-right: 3px;
 }
 
 /* Features */
-.container-fluid {
-  padding: 3% 15%;
-}
-
 .features-text {
   font-size: 1.1rem;
   font-family: "Roboto Condensed";
 }
+
 .icon {
   color: #243E2C;
   margin-bottom: 1rem;
@@ -63,16 +51,4 @@
   .nav-link {
     text-align: center;
   }
-}
-
-.social-link {
-  margin: 10px 20px;
-}
-
-.social-icon {
-  color: #243E2C;
-}
-
-.social-icon:hover {
-  color: #D6CEBD;
 }

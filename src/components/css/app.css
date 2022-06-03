@@ -17,6 +17,19 @@ p {
   color: #243E2C;
 }
 
+.btn {
+  background-color: #243E2C;
+}
+
+.btn:hover {
+  background-color: #D6CEBD;
+  color: #000000;
+}
+
+.container-fluid {
+  padding: 3% 15%;
+}
+
 /* Headings */
 
 .section-heading {

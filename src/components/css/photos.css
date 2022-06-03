@@ -11,3 +11,8 @@
 .gallery {
   padding-top: 20px;
 }
+
+.photo-section {
+  padding-left: 5% !important;
+  padding-right: 5% !important;
+}
