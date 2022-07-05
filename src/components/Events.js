@@ -12,7 +12,7 @@ Amplify.configure(awsExports);
 const calurl = "https://scoutbook.scouting.org/ics/100407.E0A04.ics"
 
 function Calendar() {
-  const loading = getElementById("loading");
+  const loading = document.getElementById("loading");
   var icsText;
   
   fetch(calurl).then(function(response) {
