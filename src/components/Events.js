@@ -1,27 +1,28 @@
 import React from 'react';
 
+import ICAL from 'ical.js';
+
 import { Amplify } from 'aws-amplify';
 import { Authenticator,useTheme,Heading, Text } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
 import './css/events.css';
 
+import ics from './troopcalendar';
+
 import awsExports from '../aws-exports';
 Amplify.configure(awsExports);
 
-const calurl = "https://scoutbook.scouting.org/ics/100407.E0A04.ics"
-
 function Calendar() {
-  const loading = document.getElementById("loading");
-  var icsText;
-  
-  fetch(calurl).then(function(response) {
-    response.text.then(function(text) {
-      icsText = text;
-    });
-  });
-  
-  return icsText;
+  var data = ICAL.parse(ics);
+
+
+
+  console.log(data);
+
+  console.log(data.getFirstSubcomponent("vevent"));
+
+  return ics;
 }
 
 function Events() {
