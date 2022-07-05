@@ -9,6 +9,21 @@ import './css/events.css';
 import awsExports from '../aws-exports';
 Amplify.configure(awsExports);
 
+const calurl = "https://scoutbook.scouting.org/ics/100407.E0A04.ics"
+
+function Calendar() {
+  const loading = getElementById("loading");
+  var icsText;
+  
+  fetch(calurl).then(function(response) {
+    response.text.then(function(text) {
+      icsText = text;
+    });
+  });
+  
+  return icsText;
+}
+
 function Events() {
   return (
     <div className="container-fluid photo-section color-scheme-alt">
@@ -18,8 +33,10 @@ function Events() {
           <>
             <button onClick={signOut}>Sign out</button>
             <div className="events">
-            <br />
-              <iframe src="https://scoutbook.scouting.org/?Redir=%2Fmobile%2Fdashboard%2Fcalendar" className="events-iframe" frameBorder="0" />
+              <br />
+              <p id="loading">Loading calendar...</p>
+              <br />
+              <p>{Calendar()}</p>
             </div>
           </>
         )}
