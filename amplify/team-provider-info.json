@@ -28,6 +28,12 @@
       "auth": {
         "amplifyt485appebc5838a": {},
         "amplifyt485app81b7fdf4": {}
+      },
+      "storage": {
+        "amplifyt485appb11891ea": {
+          "bucketName": "s3buckett48544000-main",
+          "region": "us-west-1"
+        }
       }
     }
   }
