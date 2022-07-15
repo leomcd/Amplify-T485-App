@@ -27,19 +27,19 @@ function Photos() {
               <div id="carouselControls" className="carousel slide" data-ride="false">
                 <div className="carousel-inner">
                   <div className="carousel-item active container-fluid">
-                    <AmplifyS3Image className="amplify-img-carousel" imgKey="ebay1.HEIC" /><br></br>
+                    <AmplifyS3Image className="amplify-img-carousel" imgKey="EBAY1.jpeg" /><br></br>
                   </div>
                   <div className="carousel-item container-fluid">
-                    <AmplifyS3Image className="amplify-img-carousel" imgKey="ebay2.HEIC" /><br></br>
+                    <AmplifyS3Image className="amplify-img-carousel" imgKey="EBAY2.jpeg" /><br></br>
                   </div>
                   <div className="carousel-item container-fluid">
-                    <AmplifyS3Image className="amplify-img-carousel" imgKey="ebay3.JPG" /><br></br>
+                    <AmplifyS3Image className="amplify-img-carousel" imgKey="EBAY3.jpeg" /><br></br>
                   </div>
                   <div className="carousel-item container-fluid">
-                    <AmplifyS3Image className="amplify-img-carousel" imgKey="ebay4.JPG" /><br></br>
+                    <AmplifyS3Image className="amplify-img-carousel" imgKey="EBAY4.jpeg" /><br></br>
                   </div>
                   <div className="carousel-item container-fluid">
-                    <AmplifyS3Image className="amplify-img-carousel" imgKey="ebay5.JPG" /><br></br>
+                    <AmplifyS3Image className="amplify-img-carousel" imgKey="EBAY5.jpeg" /><br></br>
                   </div>
                 </div>
                 <a className="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
