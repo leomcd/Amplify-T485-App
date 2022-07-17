@@ -9,6 +9,8 @@ import '@aws-amplify/ui-react/styles.css';
 
 import './css/photos.css';
 
+import StorageCarousel from './Photo-Components/StorageCarousel';
+
 import awsExports from '../aws-exports';
 import { Storage } from 'aws-amplify';
 Amplify.configure(awsExports);
@@ -24,34 +26,10 @@ function Photos() {
             <button onClick={signOut}>Sign out</button>
             <div className="photos">
               <h2 className="section-heading">Emerald Bay</h2>
-              <div id="carouselControls" className="carousel slide" data-ride="false">
-                <div className="carousel-inner">
-                  <div className="carousel-item active container-fluid">
-                    <AmplifyS3Image className="amplify-img-carousel" imgKey="ebay1.HEIC" /><br></br>
-                  </div>
-                  <div className="carousel-item container-fluid">
-                    <AmplifyS3Image className="amplify-img-carousel" imgKey="ebay2.HEIC" /><br></br>
-                  </div>
-                  <div className="carousel-item container-fluid">
-                    <AmplifyS3Image className="amplify-img-carousel" imgKey="ebay3.JPG" /><br></br>
-                  </div>
-                  <div className="carousel-item container-fluid">
-                    <AmplifyS3Image className="amplify-img-carousel" imgKey="ebay4.JPG" /><br></br>
-                  </div>
-                  <div className="carousel-item container-fluid">
-                    <AmplifyS3Image className="amplify-img-carousel" imgKey="ebay5.JPG" /><br></br>
-                  </div>
-                </div>
-                <a className="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
-                  <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span className="sr-only">Previous</span>
-                </a>
-                <a className="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
-                  <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span className="sr-only">Next</span>
-                </a>
-              </div>
-            <Link to="ebay" className="btn btn-dark btn-lg">Photo Gallery</Link>
+
+              <StorageCarousel target="ebay" />
+
+              <Link to="ebay" className="btn btn-dark btn-lg">Photo Gallery</Link>
             </div>
           </>
         )}
@@ -109,4 +87,32 @@ const components = {
     },
   },
 };
+
+<div id="carouselControls" className="carousel slide" data-ride="false">
+  <div className="carousel-inner">
+    <div className="carousel-item active container-fluid">
+      <AmplifyS3Image className="amplify-img-carousel" imgKey="ebay1.HEIC" /><br></br>
+    </div>
+    <div className="carousel-item container-fluid">
+      <AmplifyS3Image className="amplify-img-carousel" imgKey="ebay2.HEIC" /><br></br>
+    </div>
+    <div className="carousel-item container-fluid">
+      <AmplifyS3Image className="amplify-img-carousel" imgKey="ebay3.JPG" /><br></br>
+    </div>
+    <div className="carousel-item container-fluid">
+      <AmplifyS3Image className="amplify-img-carousel" imgKey="ebay4.JPG" /><br></br>
+    </div>
+    <div className="carousel-item container-fluid">
+      <AmplifyS3Image className="amplify-img-carousel" imgKey="ebay5.JPG" /><br></br>
+    </div>
+  </div>
+  <a className="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span className="sr-only">Previous</span>
+  </a>
+  <a className="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+    <span className="sr-only">Next</span>
+  </a>
+</div>
 */
