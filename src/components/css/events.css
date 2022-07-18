@@ -1,5 +1,26 @@
 /* Events */
-.events-iframe {
-  width: 60vw;
-  height: 55vh;
+.events-container {
+  padding: 0 !important;
+}
+
+.events-table {
+  padding: 0;
+  margin: 0;
+  font-size: 1.8vw;
+}
+
+.events-table td {
+  width: 9vw;
+  height: 9vw;
+}
+
+.events-table td:hover {
+  background-color: rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+.events-control-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around; 
 }

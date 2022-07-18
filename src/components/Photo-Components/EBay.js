@@ -8,6 +8,8 @@ import '@aws-amplify/ui-react/styles.css';
 
 import '../css/photos.css';
 
+import StorageGallery from './StorageGallery';
+
 import awsExports from '../../aws-exports';
 import { Storage } from 'aws-amplify';
 Amplify.configure(awsExports);
@@ -21,13 +23,7 @@ function EBay() {
         {({ signOut, user }) => (
           <>
             <button onClick={signOut}>Sign out</button>
-            <div className="gallery">
-              <AmplifyS3Image className="amplify-img-gallery" imgKey="ebay1.HEIC" />
-              <AmplifyS3Image className="amplify-img-gallery" imgKey="ebay2.HEIC" />
-              <AmplifyS3Image className="amplify-img-gallery" imgKey="ebay3.JPG" />
-              <AmplifyS3Image className="amplify-img-gallery" imgKey="ebay4.JPG" />
-              <AmplifyS3Image className="amplify-img-gallery" imgKey="ebay5.JPG" />
-            </div>
+            <StorageGallery target="ebay/" />
           </>
         )}
       </Authenticator>

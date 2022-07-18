@@ -16,3 +16,14 @@
   padding-left: 5% !important;
   padding-right: 5% !important;
 }
+
+.gallery-item {
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline;
+}
+
+.photo-section-heading {
+  margin: 0;
+  padding: 28px 0px 0px 0px;
+}

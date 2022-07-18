@@ -25,9 +25,9 @@ function Photos() {
           <>
             <button onClick={signOut}>Sign out</button>
             <div className="photos">
-              <h2 className="section-heading">Emerald Bay</h2>
+              <h2 className="section-heading photo-section-heading">Emerald Bay</h2>
 
-              <StorageCarousel target="ebay" />
+              <StorageCarousel target="ebay/" />
 
               <Link to="ebay" className="btn btn-dark btn-lg">Photo Gallery</Link>
             </div>

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import { Storage } from 'aws-amplify';
@@ -7,26 +7,23 @@ import { AmplifyS3Image } from "@aws-amplify/ui-react/legacy";
 class CarouselInner extends React.Component {
   constructor(props) {
     super(props);
-
-    this.finished = 0;
-
     this.container = React.createElement('div', {"className":"carousel-inner", "id":"carousel-inner"});
+  }
 
-    Storage.list(props.target) // for listing ALL files without prefix, pass '' instead
+  componentDidMount() {
+    Storage.list(this.props.target) // for listing ALL files without prefix, pass '' instead
       .then(result => {
         for (let i = 0; i < result.length; i++) {
-          if (this.finished < result.length) {
-            this.finished++;
-            console.log(this.finished);
+          if (result[i].key !== this.props.target) {
             const newDiv = document.createElement("div");
-            if (i != 0) {newDiv.className = "carousel-item container-fluid"} else {newDiv.className = "carousel-item container-fluid active"}
+            if (i != 1) {newDiv.className = "carousel-item container-fluid";} else {newDiv.className = "carousel-item container-fluid active";}
 
             document.getElementById('carousel-inner').appendChild(newDiv);
 
             ReactDOM.render(
                 <AmplifyS3Image className="amplify-img-carousel" imgKey={result[i].key} />, newDiv);
           };
-        };
+        }
       }
     )
     .catch(err => console.log(err));
