@@ -16,7 +16,7 @@ class CarouselInner extends React.Component {
         for (let i = 0; i < result.length; i++) {
           if (result[i].key !== this.props.target) {
             const newDiv = document.createElement("div");
-            if (i != 1) {newDiv.className = "carousel-item container-fluid";} else {newDiv.className = "carousel-item container-fluid active";}
+            if (i != 1) {newDiv.className = "carousel-item active";} else {newDiv.className = "carousel-item container-fluid active";}
 
             document.getElementById('carousel-inner').appendChild(newDiv);
 
@@ -38,17 +38,17 @@ class StorageCarousel extends React.Component {
   render() {
     return (
       <>
-        <div id="carouselControls" className="carousel slide" data-ride="false">
+        <div id="carouselControls" className="carousel slide" data-bs-ride="carousel">
           <CarouselInner target={this.props.target} />
 
-          <a className="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+          <button className="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="sr-only">Previous</span>
-          </a>
-          <a className="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button className="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
             <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="sr-only">Next</span>
-          </a>
+            <span className="visually-hidden">Next</span>
+          </button>
         </div>
       </>
     );

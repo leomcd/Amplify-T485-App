@@ -20,13 +20,14 @@
 .testimonial-image {
   width: 10%;
   border-radius: 100%;
-  margin: 20px;
+  margin: 10px;
 }
 
 /* Scoutmaster Letter */
 .scoutmaster-letter {
   padding: 3% 15%;
   text-align: left;
+  padding-bottom: 1px !important;
 }
 
 .section-heading{

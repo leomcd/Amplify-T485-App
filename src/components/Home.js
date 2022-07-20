@@ -9,7 +9,7 @@ function Home() {
     <>
       <div id="title" className="container-fluid color-scheme-alt">
         <div className="row justify-content-center">
-          <img src="images/scouts_bsa.png" className="center-block" alt="scouts_bsa" />
+          <img src="images/scouts_bsa.png" className="center-block bsa-logo" alt="scouts_bsa" />
         </div>
         <div className="row justify-content-center">
           <a href="https://www.facebook.com/pg/Troop485/about/">
@@ -45,35 +45,35 @@ function Home() {
       </div>
 
       <div id="testimonials" className="color-scheme-alt">
-        <div id="carouselControls" className="carousel slide" data-ride="false">
-          <div className="carousel-inner">
-            <div className="carousel-item active container-fluid">
-              <h2>Scouting gives our whole family a way to adventure together and to serve our local community.</h2>
-              <img className="testimonial-image" src='images/tim_profile.png' alt="tim_quote" /><br></br>
-              <em>Tim K. <br></br>
-                Agoura Hills, CA</em>
+        <div id="carouselControls" className="carousel slide" data-bs-ride="carousel">
+          <div className="carousel-inner container-fluid">
+            <div className="carousel-item active">
+            <h2>Scouting gives our whole family a way to adventure together and to serve our local community.</h2>
+            <img className="testimonial-image" src='images/tim_profile.png' alt="tim_quote" /><br></br>
+            <em>Tim K. <br></br>
+              Agoura Hills, CA</em>
             </div>
-            <div className="carousel-item container-fluid">
-              <h2 className="testimonial-text">I can't wait for our next electronics night.</h2>
-              <img className="testimonial-image" src="images/bash.png" alt="bash_quote" /><br></br>
-              <em>Bash H-K. <br></br>
-                Agoura Hills, CA</em>
+            <div className="carousel-item">
+            <h2 className="testimonial-text">I can't wait for our next electronics night.</h2>
+            <img className="testimonial-image" src="images/bash.png" alt="bash_quote" /><br></br>
+            <em>Bash H-K. <br></br>
+              Agoura Hills, CA</em>
             </div>
-            <div className="carousel-item container-fluid">
-              <h2 className="testimonial-text">I enjoy scouting for its cooking.</h2>
-              <img className="testimonial-image" src="images/leo_profile.png" alt="leo_quote" /><br></br>
-              <em>Leo McD <br></br>
-                Agoura Hills, CA</em>
+            <div className="carousel-item">
+            <h2 className="testimonial-text">I enjoy scouting for its cooking.</h2>
+            <img className="testimonial-image" src="images/leo_profile.png" alt="leo_quote" /><br></br>
+            <em>Leo McD <br></br>
+              Agoura Hills, CA</em>
             </div>
           </div>
-          <a className="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+          <button className="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="sr-only">Previous</span>
-          </a>
-          <a className="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button className="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
             <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="sr-only">Next</span>
-          </a>
+            <span className="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
 
@@ -94,9 +94,7 @@ function Home() {
           Beyond the skills, Scouting in Troop 485 develops character with a focus on living the Scout Oath and Scout Law, highlighting these at Scout meetings, Boards of Review and Scoutmaster conferences.
         </p>
       </div>
-      <div className="signature col-lg-12 container-fluid">
-        <img className="testimonial-image left-block" src='images/scoutmaster.png' alt="scoutmaster" />
-      </div>
+      <img className="testimonial-image left-block" src='images/scoutmaster.png' alt="scoutmaster" />
       <div className="signature col-lg-12 container-fluid">
         <em>Greg Dato<br></br>
         Troop 485 Scoutmaster</em>
