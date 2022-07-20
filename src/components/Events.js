@@ -1,49 +1,90 @@
 import React from 'react';
 
-import csvStringToArray from './generic/csvStringToArray';
-
 import { Amplify } from 'aws-amplify';
 import { Authenticator,useTheme,Heading, Text } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
 import './css/events.css';
 
-import ics from './troopcalendar';
+import csv from './troopcalendar';
+import csvParse from './generic/csvStringToArray';
 
 import awsExports from '../aws-exports';
 Amplify.configure(awsExports);
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-class TableData extends React.Component {
-  
-}
-
 class Calendar extends React.Component {
+  getTimeStamp(res) {
+    const date = res.dtstart.split('"')[1].split('-');
+
+    const year = date[0];
+    const month = date[1];
+
+    const dayTime = date[2].split('T');
+    const day = dayTime[0];
+
+    const time = dayTime[1].split(':');
+    const hour = time[0];
+    const minute = time[1];
+    const second = time[2];
+
+    return [year,month,day,hour,minute,second];
+  }
+
+  getEventsOnDay(idx) {
+    let day = idx - this.state.firstDayOfMonth.getDay() + 1;
+    if (day < 10) {day = '0' + day.toString();}
+
+    let month = this.state.currentMonth + 1;
+    if (month < 10) {month = '0' + month.toString();}
+
+    const year = this.state.currentYear;
+    const key = year + month + day;
+
+    let events = this.data[key];
+
+    if (events) {return events;}
+    else {return [];}
+  }
+
+  getCalendarData() {
+    const data = csvParse(csv);
+
+    let dates = {};
+
+    data.forEach((res, i) => {
+      const [year,month,day,hour,minute,second] = this.getTimeStamp(res);
+      const key = year.toString() + month.toString() + day.toString();
+
+      if (!dates.hasOwnProperty(key)) {
+        dates[key] = [res];
+      } else {
+        dates[key].push(res);
+      };
+    });
+
+    return dates;
+  }
+
   calculateDates() {
-    this.state.currentMonth = this.state.currentDate.getMonth();
-    this.state.currentMonthStr = monthNames[this.state.currentMonth];
+    let newState = this.state;
+    newState.currentMonth = this.state.currentDate.getMonth();
+    newState.currentMonthStr = monthNames[this.state.currentMonth];
 
-    this.state.currentYear = this.state.currentDate.getFullYear();
+    newState.currentYear = this.state.currentDate.getFullYear();
 
-    this.state.firstDayOfMonth = new Date(this.state.currentYear, this.state.currentMonth, 1);
-    this.state.lastDayOfMonth = new Date(this.state.currentYear, this.state.currentMonth + 1, 0);
+    newState.firstDayOfMonth = new Date(this.state.currentYear, this.state.currentMonth, 1);
+    newState.lastDayOfMonth = new Date(this.state.currentYear, this.state.currentMonth + 1, 0);
 
-    this.render();
+    this.setState(newState);
   }
 
-  addMonth() {
-    const date = this.state.currentDate
-    this.state.currentDate = new Date(date.setMonth(date.getMonth()+1));
-
-    this.calculateDates();
-
-    console.log("hello");
-  }
-
-  removeMonth() {
-    const date = this.state.currentDate
-    this.state.currentDate = new Date(date.setMonth(date.getMonth()-1));
+  addMonth(add) {
+    const date = this.state.currentDate;
+    let newState = this.state;
+    newState.currentDate = new Date(date.setMonth(date.getMonth() + add));
+    this.setState(newState);
 
     this.calculateDates();
   }
@@ -53,7 +94,12 @@ class Calendar extends React.Component {
 
     this.state = {};
 
+    this.data = this.getCalendarData();
+
     this.state.currentDate = new Date();
+
+    this.state.currentEvent = {};
+    this.state.popupEnabled = false;
 
     this.calculateDates();
   }
@@ -68,23 +114,78 @@ class Calendar extends React.Component {
     }
   }
 
+  loadPopup(event) {
+    let newState = this.state;
+
+    newState.popupEnabled = true;
+
+    newState.currentEvent = event;
+
+    this.setState(newState);
+  }
+
+  closePopup() {
+    let newState = this.state;
+
+    newState.popupEnabled = false;
+
+    newState.currentEvent = {};
+
+    this.setState(newState);
+  }
+
   renderTableData(idx) {
+    const events = this.getEventsOnDay(idx);
+    let summary = "";
+
+    if (events.length > 0) {
+      summary = events[0].summary;
+    }
+
     return (
       <td>
         <div className="events-day">
           <p>{this.getDayNum(idx)}</p>
+          <h6 className="event-name" onClick={() => this.loadPopup(events[0])}>{summary}</h6>
         </div>
       </td>
     )
   }
 
+  renderPopup() {
+    if (this.state.popupEnabled) {
+      let [year,month,day,hour,minute,second] = this.getTimeStamp(this.state.currentEvent);
+      let m = "am"
+      if (hour > 12) {hour -= 12; m = "pm";}
+
+      let description = "";
+      if (this.state.currentEvent.description !== undefined) {description = "Description: " + this.state.currentEvent.description}
+
+      return (
+        <div className="event-popup-container">
+          <div className="event-popup">
+            <div className="events-popup-content">
+              <h1>{this.state.currentEvent.summary}</h1>
+              <h2>Date: {month}/{day}/{year}</h2>
+              <h2>Time: {hour}:{minute}{m}</h2>
+              <h2>{description}</h2>
+              <h2>Location: {this.state.currentEvent.location}</h2>
+            </div>
+            <button type="button" onClick={() => this.closePopup()} className="btn-close events-popup-close" aria-label="Close" />
+          </div>
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
       <div className="container-fluid events-container">
+        {this.renderPopup()}
         <div className="events-control-container">
-          <button onClick={() => this.addMonth()}>&#8592;</button>
+          <span onClick={() => this.addMonth(-1)} className="events-control-btn carousel-control-prev-icon" />
           <h3 className="section-heading">Events for {this.state.currentMonthStr} {this.state.currentYear}</h3>
-          <button onClick={() => this.addMonth()}>&#8594;</button>
+          <span onClick={() => this.addMonth(1)} className="events-control-btn carousel-control-next-icon" />
         </div>
         <table className="table events-table">
           <thead>

@@ -11,4 +11,21 @@ const csvStringToArray = strData =>
     return arrData;
 }
 
-export default csvStringToArray;
+const csvParse = strData =>
+{
+  const data = csvStringToArray(strData);
+  let res = [];
+  const topLine = data[0];
+  for (let i = 1; i < data.length; i++) {
+    if (data[i].length > 1) {
+      let value = {};
+      for (let j = 0; j < topLine.length; j++) {
+        value[topLine[j]] = data[i][j];
+      }
+      res.push(value);
+    }
+  }
+  return res;
+}
+
+export default csvParse;

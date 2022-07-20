@@ -1,26 +1,72 @@
 /* Events */
 .events-container {
+  display: flex;
+  flex-direction: column;
   padding: 0 !important;
+  align-items: center;
 }
 
 .events-table {
   padding: 0;
   margin: 0;
+  width: 90vw;
   font-size: 1.8vw;
+  max-width: 1000px;
 }
 
 .events-table td {
-  width: 9vw;
-  height: 9vw;
-}
-
-.events-table td:hover {
-  background-color: rgba(0,0,0,0.1);
-  cursor: pointer;
+  width: 8vw;
+  height: 8vw;
+  padding: 0;
 }
 
 .events-control-container {
   display: flex;
   align-items: center;
-  justify-content: space-around; 
+  justify-content: space-around;
+  width: 100%;
+}
+
+.events-table p {
+  text-align: left;
+  padding: 4px;
+}
+
+.event-name {
+  background-color: #B4AC9B;
+  margin-bottom: 20px;
+}
+
+.event-name:hover {
+  background-color: #C5BDAC;
+  cursor: pointer;
+}
+
+.event-popup-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 60%;
+}
+
+.event-popup {
+  width: 500px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.events-popup-content {
+  width: 100%;
+}
+
+.events-popup-close {
+  padding: 20px 20px 10px 10px;
+}
+
+.events-control-btn:hover {
+  cursor: pointer;
 }
