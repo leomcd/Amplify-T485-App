@@ -16,7 +16,7 @@ const monthNames = ["January", "February", "March", "April", "May", "June", "Jul
 
 class Calendar extends React.Component {
   getTimeStamp(res) {
-    const date = res.dtstart.split('"')[1].split('-');
+    const date = res.split('"')[1].split('-');
 
     const year = date[0];
     const month = date[1];
@@ -54,7 +54,7 @@ class Calendar extends React.Component {
     let dates = {};
 
     data.forEach((res, i) => {
-      const [year,month,day,hour,minute,second] = this.getTimeStamp(res);
+      const [year,month,day,hour,minute,second] = this.getTimeStamp(res.dtstart);
       const key = year.toString() + month.toString() + day.toString();
 
       if (!dates.hasOwnProperty(key)) {
@@ -154,22 +154,25 @@ class Calendar extends React.Component {
 
   renderPopup() {
     if (this.state.popupEnabled) {
-      let [year,month,day,hour,minute,second] = this.getTimeStamp(this.state.currentEvent);
+      let [year,month,day,hour,minute,second] = this.getTimeStamp(this.state.currentEvent.dtstart);
       let m = "am"
       if (hour > 12) {hour -= 12; m = "pm";}
 
+      let descriptionTitle = "";
       let description = "";
-      if (this.state.currentEvent.description !== undefined) {description = "Description: " + this.state.currentEvent.description}
+      if (this.state.currentEvent.description !== undefined) {descriptionTitle = "Description: "; description = this.state.currentEvent.description;}
+
+      let [endYear,endMonth,endDay,endHour,endMinute,endSecond] = this.getTimeStamp(this.state.currentEvent.dtend);
 
       return (
         <div className="event-popup-container">
           <div className="event-popup">
             <div className="events-popup-content">
               <h1>{this.state.currentEvent.summary}</h1>
-              <h2>Date: {month}/{day}/{year}</h2>
-              <h2>Time: {hour}:{minute}{m}</h2>
-              <h2>{description}</h2>
-              <h2>Location: {this.state.currentEvent.location}</h2>
+              <h2>Date: <p>{month}/{day}/{year}</p></h2>
+              <h2>Time: <p>{hour}:{minute}{m}</p></h2>
+              <h2>{descriptionTitle}<p>{description}</p></h2>
+              <h2>Location: <p>{this.state.currentEvent.location}</p></h2>
             </div>
             <button type="button" onClick={() => this.closePopup()} className="btn-close events-popup-close" aria-label="Close" />
           </div>

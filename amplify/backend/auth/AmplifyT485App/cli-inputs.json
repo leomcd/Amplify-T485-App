@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "amplifyt485app81b7fdf4_identitypool_81b7fdf4",
+    "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "amplif81b7fdf4",
-    "userPoolName": "amplifyt485app81b7fdf4_userpool_81b7fdf4",
+    "resourceNameTruncated": "amplife9fa0d52",
+    "userPoolName": "AmplifyT485App",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -25,20 +25,23 @@
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
-    "userpoolClientWriteAttributes": [
-      "email"
-    ],
-    "userpoolClientReadAttributes": [
-      "email"
-    ],
-    "userpoolClientLambdaRole": "amplif81b7fdf4_userpoolclient_lambda_role",
+    "userpoolClientWriteAttributes": [],
+    "userpoolClientReadAttributes": [],
+    "userpoolClientLambdaRole": "Amplife9fa0d52_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "81b7fdf4",
-    "resourceName": "amplifyt485app81b7fdf4",
+    "sharedId": "e9fa0d52",
+    "resourceName": "AmplifyT485App",
     "authSelections": "identityPoolAndUserPool",
-    "useDefault": "default",
-    "userPoolGroupList": [],
     "serviceName": "Cognito",
+    "usernameAttributes": [
+      "email"
+    ],
+    "useDefault": "manual",
+    "userPoolGroups": false,
+    "userPoolGroupList": [],
+    "adminQueries": false,
+    "thirdPartyAuth": false,
+    "authProviders": [],
     "usernameCaseSensitive": false,
     "useEnabledMfas": true
   }

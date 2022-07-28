@@ -16,7 +16,7 @@ class CarouselInner extends React.Component {
         for (let i = 0; i < result.length; i++) {
           if (result[i].key !== this.props.target) {
             const newDiv = document.createElement("div");
-            if (i != 1) {newDiv.className = "carousel-item active";} else {newDiv.className = "carousel-item container-fluid active";}
+            if (i != 1) {newDiv.className = "carousel-item container-fluid";} else {newDiv.className = "carousel-item container-fluid active";}
 
             document.getElementById('carousel-inner').appendChild(newDiv);
 

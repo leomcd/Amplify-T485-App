@@ -27,9 +27,10 @@
     "categories": {
       "auth": {
         "amplifyt485appebc5838a": {},
-        "amplifyt485app81b7fdf4": {},
         "amplifyt485auth": {},
-        "userPoolGroups": {}
+        "userPoolGroups": {},
+        "amplifyt485appe91490dde91490dd": {},
+        "AmplifyT485App": {}
       },
       "storage": {
         "amplifyt485appb11891ea": {

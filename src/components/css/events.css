@@ -50,6 +50,10 @@
   top: 60%;
 }
 
+.event-popup-container h1 {
+  margin-bottom: 30px;
+}
+
 .event-popup {
   width: 500px;
   background-color: white;
