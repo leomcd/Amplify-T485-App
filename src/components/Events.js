@@ -1,16 +1,12 @@
 import React from 'react';
 
-import { Amplify } from 'aws-amplify';
-import { Authenticator,useTheme,Heading, Text } from '@aws-amplify/ui-react';
+import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
 import './css/events.css';
 
 import csv from './troopcalendar';
 import csvParse from './generic/csvStringToArray';
-
-import awsExports from '../aws-exports';
-Amplify.configure(awsExports);
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
