@@ -2,14 +2,9 @@ import React from 'react';
 
 import { Amplify } from 'aws-amplify';
 import { Authenticator, useTheme,Heading, Text } from '@aws-amplify/ui-react';
-import {Link} from "react-router-dom";
-import { AmplifyS3Image } from "@aws-amplify/ui-react/legacy";
-import { useState } from 'react';
 import '@aws-amplify/ui-react/styles.css';
 
-import './css/photos.css';
-
-import StorageCarousel from './Photo-Components/StorageCarousel';
+import './css/forms.css';
 
 import awsExports from '../aws-exports';
 import { Storage } from 'aws-amplify';
@@ -24,12 +19,8 @@ function Photos() {
         {({ signOut, user }) => (
           <>
             <button onClick={signOut}>Sign out</button>
-            <div className="photos">
-              <h2 className="section-heading photo-section-heading">Emerald Bay</h2>
-
-              <StorageCarousel target="ebay/" />
-
-              <Link to="ebay" className="btn btn-dark btn-lg">Photo Gallery</Link>
+            <div className="forms">
+              <h2 className="form">Eagle </h2>
             </div>
           </>
         )}

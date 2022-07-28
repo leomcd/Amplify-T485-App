@@ -56,6 +56,9 @@ function Navbar() {
           <li className="d-flex nav-item">
             <Link className="nav-link" to="events">Events</Link>
           </li>
+          <li className="d-flex nav-item">
+            <Link className="nav-link" to="forms">Forms</Link>
+          </li>
         </ul>
       </div>
     </nav>

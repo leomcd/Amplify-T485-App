@@ -16,8 +16,7 @@ const monthNames = ["January", "February", "March", "April", "May", "June", "Jul
 
 class Calendar extends React.Component {
   getTimeStamp(res) {
-    const date = res.split('"')[1].split('-');
-
+    const date = res.replace(/"/g,'').replace(/ /g,'').split('-');
     const year = date[0];
     const month = date[1];
 
@@ -163,6 +162,18 @@ class Calendar extends React.Component {
       if (this.state.currentEvent.description !== undefined) {descriptionTitle = "Description: "; description = this.state.currentEvent.description;}
 
       let [endYear,endMonth,endDay,endHour,endMinute,endSecond] = this.getTimeStamp(this.state.currentEvent.dtend);
+      let em = "am"
+      if (endHour > 12) {endHour -= 12; em = "pm";}
+
+      let endDateTitle = "";
+      let endDate = "";
+      let endTime = "";
+      if (endYear !== year || endMonth !== month || endDay !== day) {
+        endDateTitle = "End date: ";
+        endDate = endMonth + "/" + endDay + "/" + endYear + " " + endHour + ":" + endMinute + em;
+      } else if (endHour !== hour || endMinute !== minute || endSecond !== second || em !== em) {
+        endTime = " - " + endHour + ":" + endMinute + em;
+      }
 
       return (
         <div className="event-popup-container">
@@ -170,9 +181,10 @@ class Calendar extends React.Component {
             <div className="events-popup-content">
               <h1>{this.state.currentEvent.summary}</h1>
               <h2>Date: <p>{month}/{day}/{year}</p></h2>
-              <h2>Time: <p>{hour}:{minute}{m}</p></h2>
+              <h2>Time: <p>{hour}:{minute}{m}{endTime}</p></h2>
               <h2>{descriptionTitle}<p>{description}</p></h2>
               <h2>Location: <p>{this.state.currentEvent.location}</p></h2>
+              <h2>{endDateTitle}<p>{endDate}</p></h2>
             </div>
             <button type="button" onClick={() => this.closePopup()} className="btn-close events-popup-close" aria-label="Close" />
           </div>
