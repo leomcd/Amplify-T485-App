@@ -3,6 +3,48 @@ import { Link } from "react-router-dom";
 
 import './css/navbar.css';
 
+import { Auth } from 'aws-amplify';
+
+class SignInOut extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      "signedout": true
+    };
+  }
+
+  componentDidMount() {
+    Auth.currentAuthenticatedUser()
+      .then(user => {
+        this.setState({
+          "signedout": false
+        });
+      })
+      .catch(err => {
+        this.state = {
+          "signedout": true
+        };
+      });
+  }
+
+  render() {
+    if (this.state.signedout) {
+      return (
+        <Link to="signin" className="nav-link">Sign In</Link>
+      );
+    } else {
+      return (
+        <a className="nav-link" href="#" onClick={() => {
+          Auth.signOut().then(() => {
+            window.location.href = "/";
+          });
+        }}>Sign out</a>
+      );
+    }
+  }
+}
+
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark">
@@ -32,6 +74,9 @@ function Navbar() {
           <li className="d-flex nav-item">
             <Link className="nav-link" to="forms">Forms</Link>
           </li>
+          <li className="d-flex nav-item">
+            <SignInOut />
+          </li>
         </ul>
       </div>
     </nav>
@@ -39,8 +84,3 @@ function Navbar() {
 }
 
 export default Navbar;
-/*
-<li className="nav-item">
-  <Link className="nav-link" to="events">Events</Link>
-</li>
-*/
