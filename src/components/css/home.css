@@ -18,7 +18,7 @@
 /* Testimonials Section */
 
 .testimonial-image {
-  width: 10%;
+  width: clamp(15px,10%,45px);
   border-radius: 100%;
   margin: 10px;
 }

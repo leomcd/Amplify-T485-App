@@ -15,7 +15,10 @@ function Forms() {
       <br />
       <WithAuth from="forms">
         <div className="forms">
-          <h2 className="form">Eagle</h2>
+          <div className="form">
+            <h2 className="form-name">Eagle Scout Service Project Workbook</h2>
+            <a className="btn btn-dark form-link" target="_blank" rel="noreferrer" href="https://www.scouting.org/programs/scouts-bsa/advancement-and-awards/eagle-scout-workbook/">Link</a>
+          </div>
         </div>
       </WithAuth>
     </div>

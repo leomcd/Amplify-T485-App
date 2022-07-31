@@ -59,10 +59,10 @@ function Navbar() {
               Contacts
             </a>
             <ul className="dropdown-menu">
-              <li><a className="dropdown-item" href="https://www.facebook.com/pg/Troop485/about/">Facebook</a></li>
+              <li><a className="dropdown-item" href="https://www.facebook.com/pg/Troop485/about/" target="_blank" rel="noreferrer">Facebook</a></li>
               <li><a className="dropdown-item" href="mailto:boyscouts485@gmail.com">Mail</a></li>
               <li><hr className="dropdown-divider" /></li>
-              <li><a className="dropdown-item" href="https://docs.google.com/forms/d/1pGRtCcQcu5Ur30JJIome3ddnbXSZjjsOUscb8tYL-rc/">Request Access</a></li>
+              <li><a className="dropdown-item" target="_blank" rel="noreferrer" href="https://docs.google.com/forms/d/1pGRtCcQcu5Ur30JJIome3ddnbXSZjjsOUscb8tYL-rc/">Request Access</a></li>
             </ul>
           </li>
           <li className="d-flex nav-item">

@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Authenticator } from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css';
+import WithAuth from './generic/WithAuth';
 
 import './css/events.css';
 
@@ -276,17 +275,12 @@ function Events() {
   return (
     <div className="container-fluid photo-section color-scheme-alt">
       <h3 className="section-heading">Events</h3>
-      <Authenticator hideSignUp={true}>
-        {({ signOut, user }) => (
-          <>
-            <button onClick={signOut}>Sign out</button>
-            <div className="events">
-              <br />
-              <Calendar />
-            </div>
-          </>
-        )}
-      </Authenticator>
+      <WithAuth from="events">
+        <div className="events">
+          <br />
+          <Calendar />
+        </div>
+      </WithAuth>
     </div>
   );
 }
