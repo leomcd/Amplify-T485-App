@@ -1,12 +1,12 @@
-/* Events */
-.events-container {
+/* Calendar */
+.calendar-container {
   display: flex;
   flex-direction: column;
   padding: 0 !important;
   align-items: center;
 }
 
-.events-table {
+.calendar-table {
   padding: 0;
   margin: 0;
   width: 90vw;
@@ -14,35 +14,35 @@
   max-width: 1000px;
 }
 
-.events-table td {
+.calendar-table td {
   width: 8vw;
   height: 8vw;
   padding: 0;
 }
 
-.events-control-container {
+.calendar-control-container {
   display: flex;
   align-items: center;
   justify-content: space-around;
   width: 100%;
 }
 
-.events-table p {
+.calendar-table p {
   text-align: left;
   padding: 4px;
 }
 
-.event-name {
+.calendar-name {
   background-color: #B4AC9B;
   margin-bottom: 20px;
 }
 
-.event-name:hover {
+.calendar-name:hover {
   background-color: #C5BDAC;
   cursor: pointer;
 }
 
-.event-popup-container {
+.calendar-popup-container {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -50,11 +50,11 @@
   top: 60%;
 }
 
-.event-popup-container h1 {
+.calendar-popup-container h1 {
   margin-bottom: 30px;
 }
 
-.event-popup {
+.calendar-popup {
   width: 500px;
   background-color: white;
   border-radius: 12px;
@@ -63,14 +63,14 @@
   justify-content: space-between;
 }
 
-.events-popup-content {
+.calendar-popup-content {
   width: 100%;
 }
 
-.events-popup-close {
+.calendar-popup-close {
   padding: 20px 20px 10px 10px;
 }
 
-.events-control-btn:hover {
+.calendar-control-btn:hover {
   cursor: pointer;
 }

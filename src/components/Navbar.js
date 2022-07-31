@@ -69,7 +69,7 @@ function Navbar() {
             <Link className="nav-link" to="photos">Photos</Link>
           </li>
           <li className="d-flex nav-item">
-            <Link className="nav-link" to="events">Events</Link>
+            <Link className="nav-link" to="calendar">Calendar</Link>
           </li>
           <li className="d-flex nav-item">
             <Link className="nav-link" to="forms">Forms</Link>

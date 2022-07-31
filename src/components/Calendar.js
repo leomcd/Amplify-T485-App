@@ -2,14 +2,14 @@ import React from 'react';
 
 import WithAuth from './generic/WithAuth';
 
-import './css/events.css';
+import './css/calendar.css';
 
 import csv from './troopcalendar';
 import csvParse from './generic/csvStringToArray';
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-class Calendar extends React.Component {
+class CalendarDisplay extends React.Component {
   getTimeStamp(res) {
     const date = res.replace(/"/g,'').replace(/ /g,'').split('-');
     const year = date[0];
@@ -26,7 +26,7 @@ class Calendar extends React.Component {
     return [year,month,day,hour,minute,second];
   }
 
-  getEventsOnDay(idx) {
+  getCalendarOnDay(idx) {
     let day = idx - this.state.firstDayOfMonth.getDay() + 1;
     if (day < 10) {day = '0' + day.toString();}
 
@@ -36,9 +36,9 @@ class Calendar extends React.Component {
     const year = this.state.currentYear;
     const key = year + month + day;
 
-    let events = this.data[key];
+    let calendar = this.data[key];
 
-    if (events) {return events;}
+    if (calendar) {return calendar;}
     else {return [];}
   }
 
@@ -129,18 +129,18 @@ class Calendar extends React.Component {
   }
 
   renderTableData(idx) {
-    const events = this.getEventsOnDay(idx);
+    const calendar = this.getCalendarOnDay(idx);
     let summary = "";
 
-    if (events.length > 0) {
-      summary = events[0].summary;
+    if (calendar.length > 0) {
+      summary = calendar[0].summary;
     }
 
     return (
       <td>
-        <div className="events-day">
+        <div className="calendar-day">
           <p>{this.getDayNum(idx)}</p>
-          <h6 className="event-name" onClick={() => this.loadPopup(events[0])}>{summary}</h6>
+          <h6 className="calendar-name" onClick={() => this.loadPopup(calendar[0])}>{summary}</h6>
         </div>
       </td>
     )
@@ -171,9 +171,9 @@ class Calendar extends React.Component {
       }
 
       return (
-        <div className="event-popup-container">
-          <div className="event-popup">
-            <div className="events-popup-content">
+        <div className="calendar-popup-container">
+          <div className="calendar-popup">
+            <div className="calendar-popup-content">
               <h1>{this.state.currentEvent.summary}</h1>
               <h2>Date: <p>{month}/{day}/{year}</p></h2>
               <h2>Time: <p>{hour}:{minute}{m}{endTime}</p></h2>
@@ -181,7 +181,7 @@ class Calendar extends React.Component {
               <h2>Location: <p>{this.state.currentEvent.location}</p></h2>
               <h2>{endDateTitle}<p>{endDate}</p></h2>
             </div>
-            <button type="button" onClick={() => this.closePopup()} className="btn-close events-popup-close" aria-label="Close" />
+            <button type="button" onClick={() => this.closePopup()} className="btn-close calendar-popup-close" aria-label="Close" />
           </div>
         </div>
       )
@@ -190,14 +190,14 @@ class Calendar extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid events-container">
+      <div className="container-fluid calendar-container">
         {this.renderPopup()}
-        <div className="events-control-container">
-          <span onClick={() => this.addMonth(-1)} className="events-control-btn carousel-control-prev-icon" />
-          <h3 className="section-heading">Events for {this.state.currentMonthStr} {this.state.currentYear}</h3>
-          <span onClick={() => this.addMonth(1)} className="events-control-btn carousel-control-next-icon" />
+        <div className="calendar-control-container">
+          <span onClick={() => this.addMonth(-1)} className="calendar-control-btn carousel-control-prev-icon" />
+          <h3 className="section-heading">Calendar for {this.state.currentMonthStr} {this.state.currentYear}</h3>
+          <span onClick={() => this.addMonth(1)} className="calendar-control-btn carousel-control-next-icon" />
         </div>
-        <table className="table events-table">
+        <table className="table calendar-table">
           <thead>
             <tr>
               <th scope="col">Sunday</th>
@@ -271,18 +271,18 @@ class Calendar extends React.Component {
   }
 }
 
-function Events() {
+function Calendar() {
   return (
     <div className="container-fluid photo-section color-scheme-alt">
-      <h3 className="section-heading">Events</h3>
-      <WithAuth from="events">
-        <div className="events">
+      <h3 className="section-heading">Calendar</h3>
+      <WithAuth from="calendar">
+        <div className="calendar">
           <br />
-          <Calendar />
+          <CalendarDisplay />
         </div>
       </WithAuth>
     </div>
   );
 }
 
-export default Events;
+export default Calendar;

@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 import Navbar from "./Navbar";
 import Home from "./Home";
-import Events from "./Events";
+import Calendar from "./Calendar";
 import Photos from "./Photos";
 import EBay from "./Photo-Components/EBay";
 import Forms from "./Forms"
@@ -27,7 +27,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route index element={ <Home /> } />
-          <Route path="/events" element={ <Events /> } />
+          <Route path="/calendar" element={ <Calendar /> } />
           <Route path="/photos" element={ <Photos /> } />
           <Route path="/photos/ebay" element={ <EBay /> } />
           <Route path="/forms" element={ <Forms /> } />
