@@ -12,7 +12,6 @@ function Photos() {
   return (
     <div className="photo-section container-fluid color-scheme-alt">
       <h3 className="section-heading">Photos</h3>
-      <br />
       <WithAuth from="photos">
         <div className="photos">
           <h2 className="section-heading photo-section-heading">Emerald Bay</h2>

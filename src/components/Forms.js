@@ -12,7 +12,6 @@ function Forms() {
   return (
     <div className="photo-section container-fluid color-scheme-alt">
       <h3 className="section-heading">Forms</h3>
-      <br />
       <WithAuth from="forms">
         <div className="forms">
           <div className="form">

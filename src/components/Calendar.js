@@ -198,7 +198,7 @@ class CalendarDisplay extends React.Component {
           <span onClick={() => this.addMonth(1)} className="calendar-control-btn carousel-control-next-icon" />
         </div>
         <table className="table calendar-table">
-          <thead>
+          <thead>   
             <tr>
               <th scope="col">Sunday</th>
               <th scope="col">Monday</th>

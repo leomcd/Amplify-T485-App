@@ -75,6 +75,9 @@ function Navbar() {
             <Link className="nav-link" to="forms">Forms</Link>
           </li>
           <li className="d-flex nav-item">
+            <Link className="nav-link" to="latestevents">Latest Events</Link>
+          </li>
+          <li className="d-flex nav-item">
             <SignInOut />
           </li>
         </ul>

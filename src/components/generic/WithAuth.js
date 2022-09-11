@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Authenticator } from '@aws-amplify/ui-react';
 
+import '@aws-amplify/ui-react/styles.css';
+
 import { Navigate } from 'react-router-dom';
 import { Auth } from 'aws-amplify';
 
