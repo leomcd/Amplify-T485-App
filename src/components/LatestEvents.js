@@ -10,7 +10,7 @@ function LatestEvents() {
         <div className="latestevent">
           <h2 className="latestevent-title">Deep Sea Fishing</h2>
           <h3 className="latestevent-subtitle">Catalina Island, August 21, 2022</h3>
-          <img src="images/latestevents/deepsea.png" />
+          <img src="images/latestevents/deepsea.jpg" />
           <p className="latestevent-description">Troop 485 went on a daytrip on a boat with Ventura Sportfishing. There was good fishing in the waters around Catalina Island, with each scout having a good catch.</p>
         </div>
         <div className="latestevent">
