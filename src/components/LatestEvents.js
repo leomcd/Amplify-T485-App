@@ -76,7 +76,7 @@ function LatestEvents() {
           <h2 className="latestevent-title">Westlake Village Eagle Project</h2>
           <h3 className="latestevent-subtitle">Westminster Presbyterian Preschool, Westlake Village, July-August, 2021</h3>
           <img src="images/latestevents/westlakevillageeagle.png" />
-          <p className="latestevent-description">Eagle Scout Brian Eno’s Eagle Project involved building a permanent sunshade for the preschool at Westminster Presbyterian Church. This was accomplished with a permanent steel frame supporting durable shade cloth to provide shade for children outside their classrooms.</p>
+          <p className="latestevent-description">Eagle Scout Brian Nio's Eagle Project involved building a permanent sunshade for the preschool at Westminster Presbyterian Church. This was accomplished with a permanent steel frame supporting durable shade cloth to provide shade for children outside their classrooms.</p>
         </div>
         <div className="latestevent">
           <h2 className="latestevent-title">Emerald Bay Summer Camp</h2>
