@@ -46,7 +46,7 @@ function LatestEvents() {
         <div className="latestevent">
           <h2 className="latestevent-title">King Gillette Ranch Eagle Project</h2>
           <h3 className="latestevent-subtitle">King Gillette Ranch, January 29, 2022</h3>
-          <img src="/images/latestevents/gilleteeagle.png" />
+          <img src="/images/latestevents/gilletteeagle.png" />
           <p className="latestevent-description">Eagle Scout Jefferson Matthew’s Eagle Project involved building a 60-foot long fence at King Gillette Ranch. The fence runs along the main roadway to provide safety for cars, animals and pedestrians attempting to cross the road.</p>
         </div>
         <div className="latestevent">
@@ -56,7 +56,7 @@ function LatestEvents() {
           <p className="latestevent-description">Having been postponed so many times, it jokingly became known as “unicorn hunting”, on November 7, 2021, Troop 485 finally got to do a series of rocket launches at El Mirage Dry Lake Bed. The activity had been previously postponed due to high winds and the Covid lockdown, but on that day, there was little wind, and conditions were perfect. Each scout built their own rocket, and got to launch it safely several times.</p>
         </div>
         <div className="latestevent">
-          <h2 className="latestevent-title">Rocket Launch</h2>
+          <h2 className="latestevent-title">Lake Cachuma Campout</h2>
           <h3 className="latestevent-subtitle">Lake Cachuma, October 8, 2021</h3>
           <img src="/images/latestevents/lakecachuma.png" />
           <p className="latestevent-description">The campout at Lake Cachuma provided great scenery, fishing, and the opportunity for fun and games.</p>
@@ -82,7 +82,7 @@ function LatestEvents() {
         <div className="latestevent">
           <h2 className="latestevent-title">Emerald Bay Summer Camp</h2>
           <h3 className="latestevent-subtitle">Catalina Island, July 25, 2021</h3>
-          <img src="/images/latestevents/westlakevillageeagle.png" />
+          <img src="/images/latestevents/emeraldbay.png" />
           <p className="latestevent-description">The 2021 summer camp was at Emerald Bay in Catalina Island. The camp has many water based activities, including kayaking, sailing, motorboating, and scuba diving, to name just a few. It was attended by seven scouts, who all had a great time.</p>
         </div>
       </div>
