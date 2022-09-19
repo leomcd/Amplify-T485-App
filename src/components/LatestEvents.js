@@ -53,7 +53,7 @@ function LatestEvents() {
           <h2 className="latestevent-title">Rocket Launch</h2>
           <h3 className="latestevent-subtitle">El Mirage Dry Lake, November 7, 2021</h3>
           <img src="/images/latestevents/rocketlaunch.png" />
-          <p className="latestevent-description">Having been postponed so many times, it jokingly became known as “unicorn hunting”, on November 7, 2021, Troop 485 finally got to do a series of rocket launches at El Mirage Dry Lake Bed. The activity had been previously postponed due to high winds and the Covid lockdown, but on that day, there was little wind, and conditions were perfect. Each scout built their own rocket, and got to launch it safely several times.</p>
+          <p className="latestevent-description">Having been postponed so many times, it jokingly became known as “unicorn hunting”. On November 7, 2021, Troop 485 finally got to do a series of rocket launches at El Mirage Dry Lake Bed. The activity had been previously postponed due to high winds and the Covid lockdown, but on that day, there was little wind, and conditions were perfect. Each scout built their own rocket, and got to launch it safely several times.</p>
         </div>
         <div className="latestevent">
           <h2 className="latestevent-title">Lake Cachuma Campout</h2>
