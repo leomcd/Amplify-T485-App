@@ -1,9 +1,7 @@
 import React from 'react';
 
 import { Amplify } from 'aws-amplify';
-import { Authenticator, useTheme,Heading, Text } from '@aws-amplify/ui-react';
-import { AmplifyS3Image } from "@aws-amplify/ui-react/legacy";
-import { useState } from 'react';
+import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
 import '../css/photos.css';
@@ -11,29 +9,29 @@ import '../css/photos.css';
 import StorageGallery from './StorageGallery';
 
 import awsExports from '../../aws-exports';
-import { Storage } from 'aws-amplify';
 Amplify.configure(awsExports);
 
 function EBay() {
-  return (
-    <div className="photo-section container-fluid color-scheme-alt">
-      <h3 className="section-heading">Emerald Bay</h3>
-      <br />
-      <Authenticator hideSignUp={true}>
-        {({ signOut, user }) => (
-          <>
-            <button onClick={signOut}>Sign out</button>
-            <StorageGallery target="ebay/" />
-          </>
-        )}
-      </Authenticator>
-    </div>
-  );
+    return (
+        <div className="photo-section container-fluid color-scheme-alt">
+            <h3 className="section-heading">Emerald Bay</h3>
+            <br />
+            <Authenticator hideSignUp={true}>
+                {({ signOut, user }) => (
+                    <>
+                        <button onClick={signOut}>Sign out</button>
+                        <StorageGallery target="ebay/" />
+                    </>
+                )}
+            </Authenticator>
+        </div>
+    );
 }
 
 export default EBay;
 
 /*
+
 const formFields = {
   confirmVerifyUser: {
     confirmation_code: {

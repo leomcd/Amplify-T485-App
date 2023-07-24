@@ -1,30 +1,64 @@
 {
   "auth": {
     "AmplifyT485App": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
       "customAuth": false,
+      "dependsOn": [],
       "frontendAuthConfig": {
-        "socialProviders": [],
-        "usernameAttributes": [
-          "EMAIL"
-        ],
-        "signupAttributes": [
-          "EMAIL"
-        ],
-        "passwordProtectionSettings": {
-          "passwordPolicyMinLength": 8,
-          "passwordPolicyCharacters": []
-        },
         "mfaConfiguration": "OFF",
         "mfaTypes": [
           "SMS"
         ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
         "verificationMechanisms": [
           "EMAIL"
         ]
-      }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_storage_amplifyt485appb11891ea_bucketName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "amplifyt485appb11891ea"
+        }
+      ]
+    },
+    "AMPLIFY_storage_amplifyt485appb11891ea_region": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "amplifyt485appb11891ea"
+        }
+      ]
+    },
+    "AMPLIFY_storage_amplifyt485appc22411f9_bucketName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "amplifyt485appc22411f9"
+        }
+      ]
+    },
+    "AMPLIFY_storage_amplifyt485appc22411f9_region": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "amplifyt485appc22411f9"
+        }
+      ]
     }
   },
   "storage": {

@@ -10,279 +10,296 @@ import csvParse from './generic/csvStringToArray';
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 class CalendarDisplay extends React.Component {
-  getTimeStamp(res) {
-    const date = res.replace(/"/g,'').replace(/ /g,'').split('-');
-    const year = date[0];
-    const month = date[1];
+	getTimeStamp(res) {
+		const date = res.replace(/"/g, '').replace(/ /g, '').split('-');
+		const year = date[0];
+		const month = date[1];
 
-    const dayTime = date[2].split('T');
-    const day = dayTime[0];
+		const dayTime = date[2].split('T');
+		const day = dayTime[0];
 
-    const time = dayTime[1].split(':');
-    const hour = time[0];
-    const minute = time[1];
-    const second = time[2];
+		var time = null;
+		var hour = null;
+		var minute = null;
+		var second = null;
 
-    return [year,month,day,hour,minute,second];
-  }
+		if (dayTime.length > 1) {
+			time = dayTime[1].split(':');
+			hour = time[0];
+			minute = time[1];
+			second = time[2];
+		}
 
-  getCalendarOnDay(idx) {
-    let day = idx - this.state.firstDayOfMonth.getDay() + 1;
-    if (day < 10) {day = '0' + day.toString();}
+		return [year, month, day, hour, minute, second];
+	}
 
-    let month = this.state.currentMonth + 1;
-    if (month < 10) {month = '0' + month.toString();}
+	getCalendarOnDay(idx) {
+		let day = idx - this.state.firstDayOfMonth.getDay() + 1;
+		if (day < 10) { day = '0' + day.toString(); }
 
-    const year = this.state.currentYear;
-    const key = year + month + day;
+		let month = this.state.currentMonth + 1;
+		if (month < 10) { month = '0' + month.toString(); }
 
-    let calendar = this.data[key];
+		const year = this.state.currentYear;
+		const key = year + month + day;
 
-    if (calendar) {return calendar;}
-    else {return [];}
-  }
+		let calendar = this.data[key];
 
-  getCalendarData() {
-    const data = csvParse(csv);
+		if (calendar) { return calendar; }
+		else { return []; }
+	}
 
-    let dates = {};
+	getCalendarData() {
+		const data = csvParse(csv);
 
-    data.forEach((res, i) => {
-      const [year,month,day,hour,minute,second] = this.getTimeStamp(res.dtstart);
-      const key = year.toString() + month.toString() + day.toString();
+		let dates = {};
 
-      if (!dates.hasOwnProperty(key)) {
-        dates[key] = [res];
-      } else {
-        dates[key].push(res);
-      };
-    });
+		data.forEach((res, i) => {
+			const [year, month, day, hour, minute, second] = this.getTimeStamp(res.dtstart);
+			const key = year.toString() + month.toString() + day.toString();
 
-    return dates;
-  }
+			if (!dates.hasOwnProperty(key)) {
+				dates[key] = [res];
+			} else {
+				dates[key].push(res);
+			};
+		});
 
-  calculateDates() {
-    let newState = this.state;
-    newState.currentMonth = this.state.currentDate.getMonth();
-    newState.currentMonthStr = monthNames[this.state.currentMonth];
+		return dates;
+	}
 
-    newState.currentYear = this.state.currentDate.getFullYear();
+	calculateDates() {
+		let newState = this.state;
+		newState.currentMonth = this.state.currentDate.getMonth();
+		newState.currentMonthStr = monthNames[this.state.currentMonth];
 
-    newState.firstDayOfMonth = new Date(this.state.currentYear, this.state.currentMonth, 1);
-    newState.lastDayOfMonth = new Date(this.state.currentYear, this.state.currentMonth + 1, 0);
+		newState.currentYear = this.state.currentDate.getFullYear();
 
-    this.setState(newState);
-  }
+		newState.firstDayOfMonth = new Date(this.state.currentYear, this.state.currentMonth, 1);
+		newState.lastDayOfMonth = new Date(this.state.currentYear, this.state.currentMonth + 1, 0);
 
-  addMonth(add) {
-    const date = this.state.currentDate;
-    let newState = this.state;
-    newState.currentDate = new Date(date.setMonth(date.getMonth() + add));
-    this.setState(newState);
+		this.setState(newState);
+	}
 
-    this.calculateDates();
-  }
+	addMonth(add) {
+		const date = this.state.currentDate;
+		let newState = this.state;
+		newState.currentDate = new Date(date.setMonth(date.getMonth() + add));
+		this.setState(newState);
 
-  constructor(props) {
-    super(props);
+		this.calculateDates();
+	}
 
-    this.state = {};
+	constructor(props) {
+		super(props);
 
-    this.data = this.getCalendarData();
+		this.state = {};
 
-    this.state.currentDate = new Date();
+		this.data = this.getCalendarData();
 
-    this.state.currentEvent = {};
-    this.state.popupEnabled = false;
+		this.state.currentDate = new Date();
 
-    this.calculateDates();
-  }
+		this.state.currentEvent = {};
+		this.state.popupEnabled = false;
 
-  getDayNum(day) {
-    const res = day - this.state.firstDayOfMonth.getDay() + 1;
-    if (res <= 0 || res > this.state.lastDayOfMonth.getDate()) {
-      return;
-    }
-    else {
-      return res;
-    }
-  }
+		this.calculateDates();
+	}
 
-  loadPopup(event) {
-    let newState = this.state;
+	getDayNum(day) {
+		const res = day - this.state.firstDayOfMonth.getDay() + 1;
+		if (res <= 0 || res > this.state.lastDayOfMonth.getDate()) {
+			return;
+		}
+		else {
+			return res;
+		}
+	}
 
-    newState.popupEnabled = true;
+	loadPopup(event) {
+		let newState = this.state;
 
-    newState.currentEvent = event;
+		newState.popupEnabled = true;
 
-    this.setState(newState);
-  }
+		newState.currentEvent = event;
 
-  closePopup() {
-    let newState = this.state;
+		this.setState(newState);
+	}
 
-    newState.popupEnabled = false;
+	closePopup() {
+		let newState = this.state;
 
-    newState.currentEvent = {};
+		newState.popupEnabled = false;
 
-    this.setState(newState);
-  }
+		newState.currentEvent = {};
 
-  renderTableData(idx) {
-    const calendar = this.getCalendarOnDay(idx);
-    let summary = "";
+		this.setState(newState);
+	}
 
-    if (calendar.length > 0) {
-      summary = calendar[0].summary;
-    }
+	renderTableData(idx) {
+		const calendar = this.getCalendarOnDay(idx);
+		let summary = "";
 
-    return (
-      <td>
-        <div className="calendar-day">
-          <p>{this.getDayNum(idx)}</p>
-          <h6 className="calendar-name" onClick={() => this.loadPopup(calendar[0])}>{summary}</h6>
-        </div>
-      </td>
-    )
-  }
+		if (calendar.length > 0) {
+			summary = calendar[0].summary;
+		}
 
-  renderPopup() {
-    if (this.state.popupEnabled) {
-      let [year,month,day,hour,minute,second] = this.getTimeStamp(this.state.currentEvent.dtstart);
-      let m = "am"
-      if (hour > 12) {hour -= 12; m = "pm";}
+		return (
+			<td>
+				<div className="calendar-day">
+					<p>{this.getDayNum(idx)}</p>
+					<h6 className="calendar-name" onClick={() => this.loadPopup(calendar[0])}>{summary}</h6>
+				</div>
+			</td>
+		)
+	}
 
-      let descriptionTitle = "";
-      let description = "";
-      if (this.state.currentEvent.description !== undefined) {descriptionTitle = "Description: "; description = this.state.currentEvent.description;}
+	renderPopup() {
+		if (this.state.popupEnabled) {
+			let [year, month, day, hour, minute, second] = this.getTimeStamp(this.state.currentEvent.dtstart);
+			let m = "am"
+			if (hour > 12) { hour -= 12; m = "pm"; }
 
-      let [endYear,endMonth,endDay,endHour,endMinute,endSecond] = this.getTimeStamp(this.state.currentEvent.dtend);
-      let em = "am"
-      if (endHour > 12) {endHour -= 12; em = "pm";}
+			let descriptionTitle = "";
+			let description = "";
+			if (this.state.currentEvent.description !== undefined) { descriptionTitle = "Description: "; description = this.state.currentEvent.description; }
 
-      let endDateTitle = "";
-      let endDate = "";
-      let endTime = "";
-      if (endYear !== year || endMonth !== month || endDay !== day) {
-        endDateTitle = "End date: ";
-        endDate = endMonth + "/" + endDay + "/" + endYear + " " + endHour + ":" + endMinute + em;
-      } else if (endHour !== hour || endMinute !== minute || endSecond !== second || em !== em) {
-        endTime = " - " + endHour + ":" + endMinute + em;
-      }
+			let [endYear, endMonth, endDay, endHour, endMinute, endSecond] = this.getTimeStamp(this.state.currentEvent.dtend);
+			let em = "am"
+			if (endHour > 12) { endHour -= 12; em = "pm"; }
 
-      return (
-        <div className="calendar-popup-container">
-          <div className="calendar-popup">
-            <div className="calendar-popup-content">
-              <h1>{this.state.currentEvent.summary}</h1>
-              <h2>Date: <p>{month}/{day}/{year}</p></h2>
-              <h2>Time: <p>{hour}:{minute}{m}{endTime}</p></h2>
-              <h2>{descriptionTitle}<p>{description}</p></h2>
-              <h2>Location: <p>{this.state.currentEvent.location}</p></h2>
-              <h2>{endDateTitle}<p>{endDate}</p></h2>
-            </div>
-            <button type="button" onClick={() => this.closePopup()} className="btn-close calendar-popup-close" aria-label="Close" />
-          </div>
-        </div>
-      )
-    }
-  }
+			let endDateTitle = "";
+			let endDate = "";
+			let endTime = "";
+			if (endYear !== year || endMonth !== month || endDay !== day) {
+				endDateTitle = "End date: ";
+				if (endHour !== null) endDate = endMonth + "/" + endDay + "/" + endYear + " " + endHour + ":" + endMinute + em;
+				else endDate = endMonth + "/" + endDay + "/" + endYear;
+			} else if (endHour !== hour || endMinute !== minute || endSecond !== second || em !== em) {
+				endTime = " - " + endHour + ":" + endMinute + em;
+			}
 
-  render() {
-    return (
-      <div className="container-fluid calendar-container">
-        {this.renderPopup()}
-        <div className="calendar-control-container">
-          <span onClick={() => this.addMonth(-1)} className="calendar-control-btn carousel-control-prev-icon" />
-          <h3 className="section-heading">Calendar for {this.state.currentMonthStr} {this.state.currentYear}</h3>
-          <span onClick={() => this.addMonth(1)} className="calendar-control-btn carousel-control-next-icon" />
-        </div>
-        <table className="table calendar-table">
-          <thead>   
-            <tr>
-              <th scope="col">Sunday</th>
-              <th scope="col">Monday</th>
-              <th scope="col">Tuesday</th>
-              <th scope="col">Wednesday</th>
-              <th scope="col">Thursday</th>
-              <th scope="col">Friday</th>
-              <th scope="col">Saturday</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              {this.renderTableData(0)}
-              {this.renderTableData(1)}
-              {this.renderTableData(2)}
-              {this.renderTableData(3)}
-              {this.renderTableData(4)}
-              {this.renderTableData(5)}
-              {this.renderTableData(6)}
-            </tr>
-            <tr>
-              {this.renderTableData(7)}
-              {this.renderTableData(8)}
-              {this.renderTableData(9)}
-              {this.renderTableData(10)}
-              {this.renderTableData(11)}
-              {this.renderTableData(12)}
-              {this.renderTableData(13)}
-            </tr>
-            <tr>
-              {this.renderTableData(14)}
-              {this.renderTableData(15)}
-              {this.renderTableData(16)}
-              {this.renderTableData(17)}
-              {this.renderTableData(18)}
-              {this.renderTableData(19)}
-              {this.renderTableData(20)}
-            </tr>
-            <tr>
-              {this.renderTableData(21)}
-              {this.renderTableData(22)}
-              {this.renderTableData(23)}
-              {this.renderTableData(24)}
-              {this.renderTableData(25)}
-              {this.renderTableData(26)}
-              {this.renderTableData(27)}
-            </tr>
-            <tr>
-              {this.renderTableData(28)}
-              {this.renderTableData(29)}
-              {this.renderTableData(30)}
-              {this.renderTableData(31)}
-              {this.renderTableData(32)}
-              {this.renderTableData(33)}
-              {this.renderTableData(34)}
-            </tr>
-            <tr>
-              {this.renderTableData(35)}
-              {this.renderTableData(36)}
-              {this.renderTableData(37)}
-              {this.renderTableData(38)}
-              {this.renderTableData(39)}
-              {this.renderTableData(40)}
-              {this.renderTableData(41)}
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    );
-  }
+			let time = "";
+			let timeTitle = "";
+
+			if (hour !== null) {
+				timeTitle = "Time: "
+				time = hour + ":" + minute + m + endTime;
+			}
+			
+
+			return (
+				<div className="calendar-popup-container">
+					<div className="calendar-popup">
+						<div className="calendar-popup-content">
+							<h1>{this.state.currentEvent.summary}</h1>
+							<h2>{descriptionTitle}<p>{description}</p></h2>
+							<h2>Location: <p>{this.state.currentEvent.location}</p></h2>
+							<h2>Date: <p>{month}/{day}/{year}</p></h2>
+							<h2>{endDateTitle}<p>{endDate}</p></h2>
+							<h2>{timeTitle}<p>{time}</p></h2>
+						</div>
+						<button type="button" onClick={() => this.closePopup()} className="btn-close calendar-popup-close" aria-label="Close" />
+					</div>
+				</div>
+			)
+		}
+	}
+
+	render() {
+		return (
+			<div className="container-fluid calendar-container">
+				{this.renderPopup()}
+				<div className="calendar-control-container">
+					<span onClick={() => this.addMonth(-1)} className="calendar-control-btn carousel-control-prev-icon" />
+					<h3 className="section-heading">Calendar for {this.state.currentMonthStr} {this.state.currentYear}</h3>
+					<span onClick={() => this.addMonth(1)} className="calendar-control-btn carousel-control-next-icon" />
+				</div>
+				<table className="table calendar-table">
+					<thead>
+						<tr>
+							<th scope="col">Sunday</th>
+							<th scope="col">Monday</th>
+							<th scope="col">Tuesday</th>
+							<th scope="col">Wednesday</th>
+							<th scope="col">Thursday</th>
+							<th scope="col">Friday</th>
+							<th scope="col">Saturday</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							{this.renderTableData(0)}
+							{this.renderTableData(1)}
+							{this.renderTableData(2)}
+							{this.renderTableData(3)}
+							{this.renderTableData(4)}
+							{this.renderTableData(5)}
+							{this.renderTableData(6)}
+						</tr>
+						<tr>
+							{this.renderTableData(7)}
+							{this.renderTableData(8)}
+							{this.renderTableData(9)}
+							{this.renderTableData(10)}
+							{this.renderTableData(11)}
+							{this.renderTableData(12)}
+							{this.renderTableData(13)}
+						</tr>
+						<tr>
+							{this.renderTableData(14)}
+							{this.renderTableData(15)}
+							{this.renderTableData(16)}
+							{this.renderTableData(17)}
+							{this.renderTableData(18)}
+							{this.renderTableData(19)}
+							{this.renderTableData(20)}
+						</tr>
+						<tr>
+							{this.renderTableData(21)}
+							{this.renderTableData(22)}
+							{this.renderTableData(23)}
+							{this.renderTableData(24)}
+							{this.renderTableData(25)}
+							{this.renderTableData(26)}
+							{this.renderTableData(27)}
+						</tr>
+						<tr>
+							{this.renderTableData(28)}
+							{this.renderTableData(29)}
+							{this.renderTableData(30)}
+							{this.renderTableData(31)}
+							{this.renderTableData(32)}
+							{this.renderTableData(33)}
+							{this.renderTableData(34)}
+						</tr>
+						<tr>
+							{this.renderTableData(35)}
+							{this.renderTableData(36)}
+							{this.renderTableData(37)}
+							{this.renderTableData(38)}
+							{this.renderTableData(39)}
+							{this.renderTableData(40)}
+							{this.renderTableData(41)}
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		);
+	}
 }
 
 function Calendar() {
-  return (
-    <div className="container-fluid photo-section color-scheme-alt">
-      <h3 className="section-heading">Calendar</h3>
-      <WithAuth from="calendar">
-        <div className="calendar">
-          <br />
-          <CalendarDisplay />
-        </div>
-      </WithAuth>
-    </div>
-  );
+	return (
+		<div className="container-fluid photo-section color-scheme-alt">
+			<h3 className="section-heading">Calendar</h3>
+			<WithAuth from="calendar">
+				<div className="calendar">
+					<br />
+					<CalendarDisplay />
+				</div>
+			</WithAuth>
+		</div>
+	);
 }
 
 export default Calendar;

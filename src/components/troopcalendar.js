@@ -1,4 +1,4 @@
-const csv = `dtstart,dtend,dtstamp,organizer,uid,attendee,created,description,last-modified,location,sequence,status,summary,transp
+const csvtemplate = `dtstart,dtend,dtstamp,organizer,uid,attendee,created,description,last-modified,location,sequence,status,summary,transp
   "2022-05-20T16:00:00","2022-05-21T16:00:00","2022-07-19T17:18:53Z","MAILTO:jngsolutions@gmail.com","4332656@scoutbook.scouting.org","","","","","Westminster Presbyterian Church","","","Welding Merit Badge",""
   "2022-05-28T19:00:00","2022-05-28T20:30:00","2022-07-19T17:18:53Z","MAILTO:jngsolutions@gmail.com","4332662@scoutbook.scouting.org","","","","","Westminster Presbyterian Church","","","Memorial Day Flag Placement",""
   "2022-06-06T19:00:00","2022-06-06T20:30:00","2022-07-19T17:18:53Z","MAILTO:jngsolutions@gmail.com","4332636@scoutbook.scouting.org","","","Camp prep. What to expect. What to bring. When to meet.","","Westminster Presbyterian Church","","","Weekly Troop Meeting",""
@@ -20,6 +20,32 @@ const csv = `dtstart,dtend,dtstamp,organizer,uid,attendee,created,description,la
   "2022-10-07T19:00:00","2022-10-09T11:30:00","2022-07-19T17:18:53Z","MAILTO:jngsolutions@gmail.com","4332956@scoutbook.scouting.org","","","","","Striker","","","Campout",""
   "2022-10-15T07:30:00","2022-10-15T12:30:00","2022-07-19T17:18:53Z","MAILTO:jngsolutions@gmail.com","4332989@scoutbook.scouting.org","","","","","Cheseboro Canyon","","","Bike Ride",""
   "2022-10-17T19:00:00","2022-10-17T20:30:00","2022-07-19T17:18:53Z","MAILTO:jngsolutions@gmail.com","4332991@scoutbook.scouting.org","","","Advancement","","Westminster Presbyterian Church","","","Weekly Troop Meeting",""
+`
+
+// regex line: \\n\\nFor more information please visit: HTTPS://scoutbook\.scouting\.org/mobile/dashboard/calendar/event\.asp\?EventID=[0-9]+
+
+const csv = `dtstart,dtend,dtstamp,organizer,uid,attendee,created,description,last-modified,location,sequence,status,summary,transp
+"2023-04-28T19:00:00","2023-04-30T19:00:00","2023-06-19T18:53:49Z","MAILTO:jngsolutions@gmail.com","4660033@scoutbook.scouting.org","","","Beach Camping at Carpinteria","","Carpinteria, CA  Group Campsite Plover","","","Campout",""
+"2023-05-01","2023-05-02","2023-06-19T18:53:49Z","MAILTO:jpowledge@gmail.com","5097781@scoutbook.scouting.org","","","","","","","","No Meeting",""
+"2023-05-06T09:00:00","2023-05-06T12:00:00","2023-06-19T18:53:49Z","MAILTO:jngsolutions@gmail.com","4997891@scoutbook.scouting.org","","","Agoura Hills is having Community Services Day at Chumash Park. Whether you need hours or not, this is a good opportunity to serve the community. These 3 hours do count as conservation hours.","","Chumash Park","","","Agoura Hills Community Services Day",""
+"2023-05-08T19:00:00","2023-05-08T20:30:00","2023-06-19T18:53:49Z","MAILTO:jpowledge@gmail.com","5097783@scoutbook.scouting.org","","","","","Westminster Presbyterian Church","","","Troop Meeting",""
+"2023-05-15T19:00:00","2023-05-15T20:30:00","2023-06-19T18:53:49Z","MAILTO:jpowledge@gmail.com","5097784@scoutbook.scouting.org","","","","","Westminster Presbyterian Church","","","Troop Meeting",""
+"2023-05-20T08:30:00","2023-05-21T12:00:00","2023-06-19T18:53:49Z","MAILTO:jpowledge@gmail.com","5024691@scoutbook.scouting.org","","","","","","","","Backpacking Overnighter",""
+"2023-05-22T19:00:00","2023-05-22T20:00:00","2023-06-19T18:53:49Z","MAILTO:jpowledge@gmail.com","5097785@scoutbook.scouting.org","","","","","Westminster Presbyterian Church","","","Patrol Leaders Council",""
+"2023-05-27T10:00:00","2023-05-27T12:00:00","2023-06-19T18:53:49Z","MAILTO:jpowledge@gmail.com","5097791@scoutbook.scouting.org","","","","","Pierce Brothers Memorial Park","","","Memorial Day Flag Placement",""
+"2023-05-29","2023-05-30","2023-06-19T18:53:49Z","MAILTO:jpowledge@gmail.com","5097792@scoutbook.scouting.org","","","","","","","","No Meeting",""
+"2023-06-18T17:00:00","2023-06-24T12:00:00","2023-06-19T18:53:49Z","MAILTO:jpowledge@gmail.com","4913894@scoutbook.scouting.org","","","","","Emerald Bay","","","Summer Camp",""
+"2023-06-26T19:00:00","2023-06-26T20:30:00","2023-06-19T18:53:49Z","MAILTO:jpowledge@gmail.com","5138734@scoutbook.scouting.org","","","","","Westminster Presbyterian Church","","","No Meeting",""
+"2023-07-03T19:00:00","2023-07-03T20:30:00","2023-06-19T18:53:49Z","MAILTO:jpowledge@gmail.com","5097796@scoutbook.scouting.org","","","Practice and preparation for July 4th activities","","Westminster Presbyterian Church","","","Parade/Fireworks Rehearsal",""
+"2023-07-04T09:00:00","2023-07-04T11:00:00","2023-06-19T18:53:49Z","MAILTO:jpowledge@gmail.com","5097793@scoutbook.scouting.org","","","Lead the 4th of July Parade and conduct the flag retirement ceremony for the City of Westlake Village","","","","","Westlake Village Parade",""
+"2023-07-04T18:00:00","2023-07-04T19:00:00","2023-06-19T18:53:49Z","MAILTO:jpowledge@gmail.com","5097795@scoutbook.scouting.org","","","Lead the flag ceremony and Pledge of Allegiance at the Westlake Village fireworks show","","","","","Westlake Village Fireworks",""
+"2023-07-10","2023-07-11","2023-06-19T18:53:49Z","MAILTO:jpowledge@gmail.com","5097797@scoutbook.scouting.org","","","","","","","","Troop Meeting",""
+"2023-07-17T19:00:00","2023-07-17T20:30:00","2023-06-19T18:53:49Z","MAILTO:jpowledge@gmail.com","5097798@scoutbook.scouting.org","","","","","Westminster Presbyterian Church","","","No Meeting",""
+"2023-07-24T19:00:00","2023-07-24T20:30:00","2023-06-19T18:53:49Z","MAILTO:jpowledge@gmail.com","5138736@scoutbook.scouting.org","","","","","Westminster Presbyterian Church","","","Troop Meeting",""
+"2023-07-28T17:00:00","2023-07-30T12:00:00","2023-06-19T18:53:49Z","MAILTO:jpowledge@gmail.com","5138741@scoutbook.scouting.org","","","Sign up for rafting https://www.signupgenius.com/go/60b0d4ea9af2ba75-whitewater1#/.  Sign up and payment due by 6/15","","Thunderbird Group Camp","","","Kern River Campout",""
+"2023-07-31T19:00:00","2023-07-31T20:30:00","2023-06-19T18:53:49Z","MAILTO:jpowledge@gmail.com","5138743@scoutbook.scouting.org","","","","","Westminster Presbyterian Church","","","NO MEETING",""
+"2023-08-07T19:00:00","2023-08-07T20:30:00","2023-06-19T18:53:49Z","MAILTO:jpowledge@gmail.com","5138744@scoutbook.scouting.org","","","","","Westminster Presbyterian Church","","","Troop Meeting",""
+"2023-08-11T17:00:00","2023-08-13T12:00:00","2023-06-19T18:53:49Z","MAILTO:jpowledge@gmail.com","5138745@scoutbook.scouting.org","","","","","","","","Foster Residence Campout",""
 `
 
 export default csv;
